@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="View your social media performance analytics and predictions dashboard" />
+    <title>Dashboard | PostPredict</title>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="../src/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/base.css" /></noscript>
+    <link rel="preload" href="../src/css/dashboard.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/dashboard.css" /></noscript>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand">PostPredict</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Features</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- DASHBOARD SECTION -->
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1>Your Analytics Dashboard</h1>
+                <p>Overview of your social media performance predictions</p>
+            </div>
+
+            <!-- STATS CARDS -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>Total Predictions</h3>
+                        <p class="stat-value" id="totalPredictions">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                        <h3>Avg Predicted Likes</h3>
+                        <p class="stat-value" id="avgLikes">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⏰</div>
+                    <div class="stat-content">
+                        <h3>Best Posting Time</h3>
+                        <p class="stat-value" id="bestTime">--:--</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📱</div>
+                    <div class="stat-content">
+                        <h3>Platforms Analyzed</h3>
+                        <p class="stat-value" id="platformsCount">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLATFORM BREAKDOWN -->
+            <div class="dashboard-section-content">
+                <h2>Platform Performance</h2>
+                <div class="platform-breakdown" id="platformBreakdown">
+                    <div class="platform-item">
+                        <div class="platform-header">
+                            <span class="platform-icon">📷</span>
+                            <h3>Instagram</h3>
+                        </div>
+                        <div class="platform-stats">
+                            <div class="platform-stat">
+                                <span class="stat-label">Avg Likes</span>
+                                <span class="stat-number">0</span>
+                            </div>
+                            <div class="platform-stat">
+                                <span class="stat-label">Posts</span>
+                                <span class="stat-number">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-header">
+                            <span class="platform-icon">📘</span>
+                            <h3>Facebook</h3>
+                        </div>
+                        <div class="platform-stats">
+                            <div class="platform-stat">
+                                <span class="stat-label">Avg Likes</span>
+                                <span class="stat-number">0</span>
+                            </div>
+                            <div class="platform-stat">
+                                <span class="stat-label">Posts</span>
+                                <span class="stat-number">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="platform-item">
+                        <div class="platform-header">
+                            <span class="platform-icon">💼</span>
+                            <h3>LinkedIn</h3>
+                        </div>
+                        <div class="platform-stats">
+                            <div class="platform-stat">
+                                <span class="stat-label">Avg Likes</span>
+                                <span class="stat-number">0</span>
+                            </div>
+                            <div class="platform-stat">
+                                <span class="stat-label">Posts</span>
+                                <span class="stat-number">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RECENT PREDICTIONS -->
+            <div class="dashboard-section-content">
+                <h2>Recent Predictions</h2>
+                <div class="predictions-list" id="predictionsList">
+                    <div class="empty-state">
+                        <p>📊 No predictions yet</p>
+                        <p>Upload your data to see predictions here</p>
+                        <a href="upload.html" class="btn btn-primary">Upload Data</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <a href="upload.html" class="action-card">
+                        <span class="action-icon">📤</span>
+                        <h3>Upload New Data</h3>
+                        <p>Upload a new CSV file for analysis</p>
+                    </a>
+                    <a href="results.html" class="action-card">
+                        <span class="action-icon">📊</span>
+                        <h3>View Results</h3>
+                        <p>See detailed prediction results</p>
+                    </a>
+                    <a href="about.html" class="action-card">
+                        <span class="action-icon">ℹ️</span>
+                        <h3>Learn More</h3>
+                        <p>Understand how predictions work</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 PostPredict</p>
+        <p>AI-Based Social Media Performance Predictor</p>
+    </footer>
+
+    <script src="../src/js/config.js"></script>
+    <script src="../src/js/auth.js"></script>
+    <script src="../src/js/dashboard.js"></script>
+    <script src="../src/js/navigation.js"></script>
+</body>
+</html>
+

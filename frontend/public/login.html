@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Login to your PostPredict account" />
+    <title>Login | PostPredict</title>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="../src/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/base.css" /></noscript>
+    <link rel="preload" href="../src/css/login.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/login.css" /></noscript>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand">PostPredict</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Features</a></li>
+            <li><a href="upload.html">Upload</a></li>
+        </ul>
+    </nav>
+
+    <!-- LOGIN SECTION -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>Welcome Back</h1>
+                    <p>Sign in to your account</p>
+                </div>
+
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" />
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                </form>
+
+                <div class="login-divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="social-btn google-btn">
+                        <span>🔍</span> Continue with Google
+                    </button>
+                    <button class="social-btn facebook-btn">
+                        <span>📘</span> Continue with Facebook
+                    </button>
+                </div>
+
+                <div id="loginError" class="error-message" style="display: none; margin-top: 15px;"></div>
+
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="register.html">Sign up</a></p>
+                </div>
+            </div>
+
+            <div class="login-info">
+                <h2>Why Create an Account?</h2>
+                <ul>
+                    <li>📊 Save your prediction history</li>
+                    <li>📈 Track performance over time</li>
+                    <li>🔔 Get personalized recommendations</li>
+                    <li>💾 Access your data from anywhere</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 PostPredict</p>
+        <p>AI-Based Social Media Performance Predictor</p>
+    </footer>
+
+    <script src="../src/js/config.js"></script>
+    <script src="../src/js/auth.js"></script>
+    <script src="../src/js/navigation.js"></script>
+    <script>
+        // Wait for DOM and scripts to load
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const errorDiv = document.getElementById('loginError');
+            
+            if (!loginForm) {
+                console.error('Login form not found');
+                return;
+            }
+            
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+                
+                // Validate inputs
+                if (!email || !password) {
+                    errorDiv.textContent = 'Please fill in all fields';
+                    errorDiv.style.display = 'block';
+                    return;
+                }
+                
+                errorDiv.style.display = 'none';
+                
+                // Disable button during request
+                const submitBtn = loginForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Signing in...';
+                
+                try {
+                    // Check if login function is available
+                    if (typeof login !== 'function') {
+                        throw new Error('Login function not available. Please refresh the page.');
+                    }
+                    
+                    await login(email, password);
+                    window.location.href = 'dashboard.html';
+                } catch (error) {
+                    console.error('Login error:', error);
+                    errorDiv.textContent = error.message || 'Login failed. Please try again.';
+                    errorDiv.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalText;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

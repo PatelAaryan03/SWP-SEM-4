@@ -1,0 +1,105 @@
+/**
+ * Optimized CSS - Consolidated common styles
+ * Reduces CSS file size and improves loading
+ */
+
+/* CSS Variables for consistency */
+:root {
+    --primary: #4a9eff;
+    --primary-hover: #3a8eef;
+    --bg-dark: #0e0e0e;
+    --bg-card: #1a1a1a;
+    --bg-card-hover: #1f1f1f;
+    --border: #2a2a2a;
+    --text: #ffffff;
+    --text-secondary: #aaa;
+    --text-muted: #888;
+    --shadow: rgba(0, 0, 0, 0.5);
+    --shadow-hover: rgba(74, 158, 255, 0.2);
+    --transition: 0.3s ease;
+    --radius: 12px;
+    --radius-lg: 20px;
+}
+
+/* Optimized animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Utility classes */
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.slide-up {
+    animation: slideUp 0.4s ease;
+}
+
+/* Optimized card styles */
+.card-base {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: transform var(--transition), border-color var(--transition);
+    will-change: transform;
+    contain: layout style paint;
+}
+
+.card-base:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+/* Optimized button styles */
+.btn-base {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--transition);
+    border: none;
+    cursor: pointer;
+    will-change: transform;
+}
+
+.btn-base:active {
+    transform: scale(0.98);
+}
+
+/* Loading skeleton */
+.skeleton {
+    background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-card-hover) 50%, var(--bg-card) 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+

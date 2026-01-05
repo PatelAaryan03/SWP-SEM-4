@@ -1,126 +1,245 @@
-# Software-Group-Project-SEM-4-
+# Frontend Module
 
-Project Title
+Modern, responsive web interface for the Social Media Performance Predictor built with HTML, CSS, and JavaScript.
 
-Social Media Post Performance Prediction System
+## 📁 Folder Structure
 
-Project Overview
+```
+frontend/
+├── public/                 # Public HTML files
+│   ├── index.html          # Landing page
+│   ├── login.html          # Login page
+│   ├── register.html       # Registration page
+│   ├── upload.html         # CSV upload page
+│   ├── dashboard.html      # Analytics dashboard
+│   ├── results.html        # Prediction results
+│   ├── about.html          # Features & information
+│   └── assets/             # Static assets
+├── src/
+│   ├── css/                # Stylesheets
+│   │   ├── base.css        # Shared/base styles
+│   │   ├── home.css        # Home page styles
+│   │   ├── login.css       # Login/register styles
+│   │   ├── upload.css      # Upload page styles
+│   │   ├── dashboard.css   # Dashboard styles
+│   │   ├── results.css     # Results page styles
+│   │   └── about.css       # About page styles
+│   └── js/                 # JavaScript files
+│       ├── config.js       # Configuration
+│       ├── auth.js         # Authentication utilities
+│       ├── navigation.js  # Navigation handling
+│       ├── upload.js       # File upload logic
+│       ├── dashboard.js    # Dashboard data loading
+│       ├── results.js      # Results display
+│       └── login.js        # Login form handling
+└── README.md               # This file
+```
 
-The Social Media Post Performance Prediction System is a machine learning–based project designed to predict the future performance of social media posts on platforms such as Instagram, Facebook, and LinkedIn.
+## 🎯 Purpose
 
-Using historical post data, the system analyzes user behavior, posting patterns, and engagement metrics to estimate how a new post is likely to perform before it is published. The predicted outputs include expected likes, engagement level, and follower growth, helping users optimize their content strategy.
+The frontend provides:
+1. **User Interface** for interacting with the prediction system
+2. **File Upload** with drag & drop support
+3. **Authentication** pages (login/register)
+4. **Dashboard** for viewing analytics
+5. **Results Display** for prediction outcomes
+6. **Responsive Design** for all devices
 
-Problem Statement
+## 🎨 Design Features
 
-Content creators and businesses often struggle to understand when, what, and how to post to achieve maximum engagement on social media platforms. Posting without data-driven insights can lead to inconsistent growth and low engagement.
+### Theme
+- **Dark Theme**: Modern dark color scheme
+- **Color Palette**: 
+  - Primary: `#4a9eff` (Blue)
+  - Background: `#0e0e0e` (Dark)
+  - Cards: `#1a1a1a` (Dark Gray)
+  - Text: `#ffffff` (White)
 
-This project addresses the problem by answering:
+### Components
+- **Navigation Bar**: Sticky header with logo and menu
+- **Cards**: Hover effects and shadows
+- **Forms**: Clean input fields with validation
+- **Buttons**: Primary and secondary styles
+- **Progress Bars**: For upload progress
+- **Error Messages**: User-friendly error display
 
-“Based on my past social media performance, how will my next post perform?”
+## 📄 Pages
 
-Objectives
+### 1. Landing Page (`index.html`)
+- Hero section with call-to-action
+- Feature cards explaining platform capabilities
+- How it works section
+- Responsive grid layout
 
-Analyze historical social media post data
+### 2. Login Page (`login.html`)
+- Email/password login form
+- Social login buttons (UI only)
+- Link to registration
+- Error message display
 
-Identify patterns affecting engagement and growth
+### 3. Register Page (`register.html`)
+- User registration form
+- Password confirmation
+- Validation feedback
+- Link to login
 
-Predict future post performance using machine learning
+### 4. Upload Page (`upload.html`)
+- Drag & drop file upload area
+- File selection and preview
+- CSV requirements display
+- Progress indicator
+- Sample CSV download
 
-Help users improve posting strategy and timing
+### 5. Dashboard (`dashboard.html`)
+- Statistics cards (Total Predictions, Avg Likes, Best Time)
+- Platform performance breakdown
+- Recent predictions list
+- Quick action cards
 
-Provide insights for data-driven decision making
+### 6. Results Page (`results.html`)
+- Main prediction cards (Average, Max, Min)
+- Best posting time display
+- Platform analysis
+- Summary statistics
 
-Features of the System
+### 7. About Page (`about.html`)
+- Project overview
+- Feature descriptions
+- How it works steps
+- Technologies used
 
-Upload and analyze historical social media data
+## 🔧 JavaScript Modules
 
-Support for multiple platforms (Instagram, Facebook, LinkedIn)
+### `config.js`
+Centralized configuration:
+- API base URL
+- File size limits
+- Supported file types
 
-Feature extraction such as:
+### `auth.js`
+Authentication utilities:
+- Token management (localStorage)
+- Login/register functions
+- API request with auth headers
+- Navigation updates
 
-Posting time and day
+### `upload.js`
+File upload handling:
+- Drag & drop support
+- File validation
+- Progress tracking
+- API communication
 
-Caption length
+### `dashboard.js`
+Dashboard data loading:
+- Fetch user statistics
+- Display platform breakdown
+- Show recent predictions
+- Handle empty states
 
-Hashtag count
+### `results.js`
+Results display:
+- Load prediction data
+- Display metrics
+- Platform analysis
+- Format data for display
 
-Content type (image, video, text)
+## 🚀 Running the Frontend
 
-Machine learning–based prediction of:
+### Option 1: Simple HTTP Server (Recommended)
+```bash
+cd frontend/public
+python -m http.server 8000
+# Visit http://localhost:8000
+```
 
-Likes
+### Option 2: Node.js HTTP Server
+```bash
+cd frontend/public
+npx http-server -p 8000
+```
 
-Engagement level
+### Option 3: Direct File Access
+Open `frontend/public/index.html` directly in browser
+(Note: Some features may not work due to CORS)
 
-Follower growth trend
+## 📱 Responsive Design
 
-Simple and user-friendly interface
+### Breakpoints
+- **Desktop**: > 968px (Full layout)
+- **Tablet**: 768px - 968px (Adjusted grid)
+- **Mobile**: < 768px (Single column, stacked)
 
-Technologies Used
+### Mobile Optimizations
+- Stacked navigation
+- Single column layouts
+- Touch-friendly buttons
+- Optimized font sizes
 
-Frontend
+## 🎯 User Flow
 
-HTML
+1. **Landing** → View features and information
+2. **Register/Login** → Create account or sign in
+3. **Upload** → Upload CSV with social media data
+4. **Predict** → System analyzes and predicts
+5. **Dashboard** → View statistics and history
+6. **Results** → See detailed predictions
 
-CSS
+## 🔐 Authentication Integration
 
-JavaScript
+- **Token Storage**: localStorage
+- **Auto-redirect**: Unauthenticated users → login
+- **Token Refresh**: Automatic on API calls
+- **Logout**: Clear tokens and redirect
 
-Backend
+## 📊 API Integration
 
-Python
+All API calls use:
+- **Base URL**: `http://localhost:5000/api`
+- **Authentication**: Bearer token in headers
+- **Error Handling**: User-friendly messages
+- **Loading States**: Progress indicators
 
-Machine Learning
+## 🎨 CSS Architecture
 
-Pandas & NumPy (data processing)
+### Base Styles (`base.css`)
+- Reset and normalization
+- Typography
+- Navigation
+- Footer
+- Common components
+- Responsive utilities
 
-Scikit-learn (model training)
+### Page-Specific Styles
+Each page has its own CSS file for:
+- Layout
+- Component styling
+- Animations
+- Page-specific features
 
-Matplotlib / Seaborn (data visualization)
+## 🔍 Browser Support
 
-Database
+- Chrome/Edge (Latest)
+- Firefox (Latest)
+- Safari (Latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
 
-CSV / Structured dataset storage
+## 📝 Code Quality
 
-Methodology
+- **Semantic HTML**: Proper element usage
+- **CSS Organization**: Modular stylesheets
+- **JavaScript**: ES6+ features
+- **Comments**: Clear code documentation
+- **Error Handling**: Comprehensive try-catch
 
-Data Collection
-Historical post data is collected, including posting time, content type, captions, hashtags, likes, comments, and followers.
+## 🚨 Important Notes
 
-Data Preprocessing
-Missing values are handled, categorical data is encoded, and irrelevant features are removed.
+1. **CORS**: Backend must have CORS enabled
+2. **API URL**: Update `config.js` if backend URL changes
+3. **Authentication**: Tokens expire after 24 hours
+4. **File Upload**: Maximum 16MB file size
+5. **Browser Console**: Check for errors during development
 
-Feature Engineering
-Raw data is converted into meaningful numerical features suitable for machine learning models.
+---
 
-Model Training
-Regression-based machine learning models are trained using past data.
-
-Prediction & Evaluation
-The trained model predicts the performance of future posts, and accuracy is evaluated using test data.
-
-Applications
-
-Social media creators and influencers
-
-Digital marketing agencies
-
-Small businesses and startups
-
-Students learning data science and machine learning
-
-Future Enhancements
-
-Integration with real-time social media APIs
-
-Advanced deep learning models
-
-Sentiment analysis of captions
-
-Dashboard with interactive analytics
-
-Automated post scheduling recommendations
-
-Conclusion
-
-The Social Media Post Performance Prediction System demonstrates how machine learning can be applied to real-world digital marketing problems. By analyzing past performance data, the system helps users make smarter posting decisions, improve engagement, and grow their social media presence efficiently.
+**Status**: Production-ready frontend with authentication, responsive design, and complete user flow.

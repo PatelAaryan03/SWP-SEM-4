@@ -1,0 +1,197 @@
+/* Home Page Styles - Optimized */
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+    background: radial-gradient(circle at top, #1a1a1a, #0e0e0e);
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+    contain: layout style paint;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(74, 158, 255, 0.1), transparent 70%);
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff, #4a9eff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 40px;
+    color: #cfcfcf;
+    line-height: 1.8;
+    font-size: 1.2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* FEATURES */
+.features {
+    padding: 100px 0;
+    background: #121212;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.card {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 16px;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    will-change: transform;
+    contain: layout style paint;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 40px rgba(74, 158, 255, 0.2);
+}
+
+.card:active {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #4a9eff;
+}
+
+.card p {
+    color: #bdbdbd;
+    line-height: 1.6;
+}
+
+/* WORKFLOW */
+.workflow {
+    padding: 100px 0;
+    background: #0e0e0e;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.step {
+    background: #1a1a1a;
+    padding: 40px 30px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid #2a2a2a;
+    transition: all 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    border-color: #4a9eff;
+}
+
+.step-number {
+    display: inline-block;
+    background: linear-gradient(135deg, #4a9eff, #3a8eef);
+    color: #000;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    line-height: 60px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #4a9eff;
+}
+
+.step p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+/* CTA */
+.cta {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #1a1a1a, #0e0e0e);
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps {
+        grid-template-columns: 1fr;
+    }
+    
+    .cta h2 {
+        font-size: 2rem;
+    }
+}
+

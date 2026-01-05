@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="View detailed prediction results for your social media posts" />
+    <title>Prediction Results | PostPredict</title>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="../src/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/base.css" /></noscript>
+    <link rel="preload" href="../src/css/results.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/results.css" /></noscript>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand">PostPredict</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Features</a></li>
+            <li><a href="upload.html">Upload</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- RESULTS SECTION -->
+    <section class="results-section">
+        <div class="container">
+            <div class="results-header">
+                <h1>Prediction Results</h1>
+                <p>AI-powered insights for your social media posts</p>
+            </div>
+
+            <!-- MAIN PREDICTIONS -->
+            <div class="predictions-grid">
+                <div class="prediction-card main-card">
+                    <div class="card-header">
+                        <span class="card-icon">📊</span>
+                        <h2>Average Predicted Likes</h2>
+                    </div>
+                    <div class="card-value" id="avgLikes">0</div>
+                    <p class="card-description">Expected average engagement per post</p>
+                </div>
+
+                <div class="prediction-card">
+                    <div class="card-header">
+                        <span class="card-icon">⬆️</span>
+                        <h3>Maximum</h3>
+                    </div>
+                    <div class="card-value" id="maxLikes">0</div>
+                    <p class="card-description">Highest predicted likes</p>
+                </div>
+
+                <div class="prediction-card">
+                    <div class="card-header">
+                        <span class="card-icon">⬇️</span>
+                        <h3>Minimum</h3>
+                    </div>
+                    <div class="card-value" id="minLikes">0</div>
+                    <p class="card-description">Lowest predicted likes</p>
+                </div>
+            </div>
+
+            <!-- BEST POSTING TIME -->
+            <div class="best-time-section">
+                <div class="time-card">
+                    <div class="time-icon">⏰</div>
+                    <div class="time-content">
+                        <h2>Best Posting Time</h2>
+                        <p class="time-value" id="bestTime">--:--</p>
+                        <p class="time-description">Optimal time to post for maximum engagement</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOLLOWER GROWTH PREDICTIONS -->
+            <div class="follower-growth-section" id="followerGrowthSection" style="display: none;">
+                <h2>Follower Growth Predictions</h2>
+                <div class="predictions-grid">
+                    <div class="prediction-card">
+                        <div class="card-header">
+                            <span class="card-icon">📈</span>
+                            <h3>Average Growth</h3>
+                        </div>
+                        <div class="card-value" id="avgGrowth">0</div>
+                        <p class="card-description">Expected average follower growth</p>
+                    </div>
+                    <div class="prediction-card">
+                        <div class="card-header">
+                            <span class="card-icon">⬆️</span>
+                            <h3>Maximum</h3>
+                        </div>
+                        <div class="card-value" id="maxGrowth">0</div>
+                        <p class="card-description">Highest predicted growth</p>
+                    </div>
+                    <div class="prediction-card">
+                        <div class="card-header">
+                            <span class="card-icon">⬇️</span>
+                            <h3>Minimum</h3>
+                        </div>
+                        <div class="card-value" id="minGrowth">0</div>
+                        <p class="card-description">Lowest predicted growth</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLATFORM ANALYSIS -->
+            <div class="platform-analysis-section">
+                <h2>Platform Performance Analysis</h2>
+                <div class="platform-cards" id="platformCards">
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <span class="platform-icon">📷</span>
+                            <h3>Instagram</h3>
+                        </div>
+                        <div class="platform-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Avg Predicted Likes</span>
+                                <span class="metric-value" id="instagramAvg">0</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Total Posts</span>
+                                <span class="metric-value" id="instagramCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <span class="platform-icon">📘</span>
+                            <h3>Facebook</h3>
+                        </div>
+                        <div class="platform-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Avg Predicted Likes</span>
+                                <span class="metric-value" id="facebookAvg">0</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Total Posts</span>
+                                <span class="metric-value" id="facebookCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="platform-card">
+                        <div class="platform-header">
+                            <span class="platform-icon">💼</span>
+                            <h3>LinkedIn</h3>
+                        </div>
+                        <div class="platform-metrics">
+                            <div class="metric">
+                                <span class="metric-label">Avg Predicted Likes</span>
+                                <span class="metric-value" id="linkedinAvg">0</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-label">Total Posts</span>
+                                <span class="metric-value" id="linkedinCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="summary-section">
+                <h2>Summary</h2>
+                <div class="summary-content">
+                    <div class="summary-item">
+                        <span class="summary-icon">📈</span>
+                        <div class="summary-text">
+                            <h4>Total Posts Analyzed</h4>
+                            <p id="totalPosts">0</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-icon">🎯</span>
+                        <div class="summary-text">
+                            <h4>Prediction Accuracy</h4>
+                            <p>Based on historical patterns</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-icon">💡</span>
+                        <div class="summary-text">
+                            <h4>Recommendation</h4>
+                            <p>Post during optimal hours for better engagement</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACTIONS -->
+            <div class="results-actions">
+                <a href="upload.html" class="btn btn-secondary">Upload New Data</a>
+                <a href="dashboard.html" class="btn btn-primary">View Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 PostPredict</p>
+        <p>AI-Based Social Media Performance Predictor</p>
+    </footer>
+
+    <script src="../src/js/config.js"></script>
+    <script src="../src/js/auth.js"></script>
+    <script src="../src/js/results.js"></script>
+    <script src="../src/js/navigation.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Upload your social media data CSV file for AI-powered performance prediction" />
+    <title>Upload Data | PostPredict</title>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="../src/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/base.css" /></noscript>
+    <link rel="preload" href="../src/css/upload.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/upload.css" /></noscript>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand">PostPredict</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Features</a></li>
+            <li><a href="upload.html" class="active">Upload</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- UPLOAD SECTION -->
+    <section class="upload-section">
+        <div class="container">
+            <div class="upload-header">
+                <h1>Upload Your Social Media Data</h1>
+                <p>Upload a CSV file with your historical post data to get predictions</p>
+            </div>
+
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <div class="upload-icon">📂</div>
+                    <h3>Drag & Drop your CSV file here</h3>
+                    <p>or</p>
+                    <label for="fileInput" class="btn btn-primary">Browse Files</label>
+                    <input type="file" id="fileInput" accept=".csv" hidden />
+                    <p class="upload-hint">Maximum file size: 16MB</p>
+                </div>
+            </div>
+
+            <div class="file-info" id="fileInfo" style="display: none;">
+                <div class="file-details">
+                    <span class="file-icon">📄</span>
+                    <div class="file-text">
+                        <h4 id="fileName"></h4>
+                        <p id="fileSize"></p>
+                    </div>
+                    <button class="remove-file" id="removeFile">✕</button>
+                </div>
+                <button class="btn btn-primary" id="uploadBtn">Upload & Analyze</button>
+            </div>
+
+            <!-- CSV REQUIREMENTS -->
+            <div class="requirements-section">
+                <h2>CSV File Requirements</h2>
+                <div class="requirements-grid">
+                    <div class="requirement-card">
+                        <span class="req-icon">📅</span>
+                        <h4>Post Date & Time</h4>
+                        <p>Include date/time column (date, post_date, timestamp)</p>
+                    </div>
+                    <div class="requirement-card">
+                        <span class="req-icon">📱</span>
+                        <h4>Platform</h4>
+                        <p>Instagram, Facebook, or LinkedIn</p>
+                    </div>
+                    <div class="requirement-card">
+                        <span class="req-icon">🖼️</span>
+                        <h4>Content Type</h4>
+                        <p>Image, Video, or Text</p>
+                    </div>
+                    <div class="requirement-card">
+                        <span class="req-icon">✍️</span>
+                        <h4>Caption</h4>
+                        <p>Post caption text (or caption_length)</p>
+                    </div>
+                    <div class="requirement-card">
+                        <span class="req-icon">#️⃣</span>
+                        <h4>Hashtags</h4>
+                        <p>Hashtag text or hashtag_count</p>
+                    </div>
+                    <div class="requirement-card">
+                        <span class="req-icon">❤️</span>
+                        <h4>Engagement</h4>
+                        <p>Likes, comments, shares (likes required)</p>
+                    </div>
+                    <div class="requirement-card">
+                        <span class="req-icon">👥</span>
+                        <h4>Followers</h4>
+                        <p>Follower count at time of posting</p>
+                    </div>
+                    <div class="requirement-card">
+                        <span class="req-icon">📊</span>
+                        <h4>Sample Data</h4>
+                        <p><a href="#" id="downloadSample">Download sample CSV</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROGRESS -->
+            <div class="progress-section" id="progressSection" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p class="progress-text" id="progressText">Uploading...</p>
+            </div>
+
+            <!-- RESULT PREVIEW -->
+            <div class="result-preview" id="resultPreview" style="display: none;">
+                <h2>Upload Successful!</h2>
+                <div class="preview-stats" id="previewStats"></div>
+                <a href="results.html" class="btn btn-primary">View Predictions</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 PostPredict</p>
+        <p>AI-Based Social Media Performance Predictor</p>
+    </footer>
+
+    <script src="../src/js/config.js"></script>
+    <script src="../src/js/auth.js"></script>
+    <script src="../src/js/upload.js"></script>
+    <script src="../src/js/navigation.js"></script>
+</body>
+</html>
+

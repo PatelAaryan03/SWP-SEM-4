@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create your PostPredict account to start predicting social media performance" />
+    <title>Register | PostPredict</title>
+    
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="../src/css/base.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/base.css" /></noscript>
+    <link rel="preload" href="../src/css/login.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="../src/css/login.css" /></noscript>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="brand">PostPredict</a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">Features</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- REGISTER SECTION -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <h1>Create Account</h1>
+                    <p>Sign up to start predicting</p>
+                </div>
+
+                <form class="login-form" id="registerForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="At least 6 characters" required minlength="6" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required />
+                    </div>
+
+                    <div id="registerError" class="error-message" style="display: none;"></div>
+
+                    <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                </form>
+
+                <div class="login-divider">
+                    <span>OR</span>
+                </div>
+
+                <div class="signup-link">
+                    <p>Already have an account? <a href="login.html">Sign in</a></p>
+                </div>
+            </div>
+
+            <div class="login-info">
+                <h2>Why Create an Account?</h2>
+                <ul>
+                    <li>📊 Save your prediction history</li>
+                    <li>📈 Track performance over time</li>
+                    <li>🔔 Get personalized recommendations</li>
+                    <li>💾 Access your data from anywhere</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 PostPredict</p>
+        <p>AI-Based Social Media Performance Predictor</p>
+    </footer>
+
+    <script src="../src/js/config.js"></script>
+    <script src="../src/js/auth.js"></script>
+    <script src="../src/js/navigation.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const errorDiv = document.getElementById('registerError');
+            
+            errorDiv.style.display = 'none';
+            
+            if (password !== confirmPassword) {
+                errorDiv.textContent = 'Passwords do not match';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            if (password.length < 6) {
+                errorDiv.textContent = 'Password must be at least 6 characters';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            try {
+                await register(email, password, name);
+                window.location.href = 'dashboard.html';
+            } catch (error) {
+                errorDiv.textContent = error.message;
+                errorDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,31 @@
+# Apache configuration for frontend optimization
+
+# Enable compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Browser caching
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|png|jpg|jpeg|gif|svg)$">
+        Header set Cache-Control "max-age=31536000, public"
+    </FilesMatch>
+</IfModule>
+
+# Enable CORS (if needed)
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
